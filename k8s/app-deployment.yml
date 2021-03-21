@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-demo-harness
+spec:
+  selector:
+    matchLabels:
+      app: webapp-demo-harness
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: webapp-demo-harness
+    spec:
+      containers:
+      - name: harness-webapp-demo
+        image: ecointet/harness-webapp-demo:v2
+        ports:
+        - containerPort: 8000
