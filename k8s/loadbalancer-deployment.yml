@@ -1,5 +1,4 @@
 apiVersion: v1
-
 kind: Service
 metadata:
   name: loadbalancer-harness-demo-app
@@ -10,6 +9,7 @@ spec:
     - port: 80
       targetPort: 8000
   type: LoadBalancer
+
 
 kind: Service
 metadata:
