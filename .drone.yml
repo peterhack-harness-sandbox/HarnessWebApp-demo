@@ -8,5 +8,5 @@ steps:
     username: ecointet
     password: 7d5219ab-ee5b-4111-b5f5-21a5623d3a48
     repo: ecointet/harness-webapp-demo
-    dockerfile: nginx/Dockerfile
+    context: nginx/
     tags: v3
