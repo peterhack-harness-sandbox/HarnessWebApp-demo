@@ -7,5 +7,5 @@
  //echo '<a href="#login"><div align="center"><img src="img/login-v2.png" width="100px" /></div></a>';
 
 //V2
-echo '<a href="#login"><div align="center"><img src="img/login-image.png" /></div></a>';
+echo '<a href="#login"><div align="center"><img src="img/login-image.png" /></div></a>'; //new image
 ?>
