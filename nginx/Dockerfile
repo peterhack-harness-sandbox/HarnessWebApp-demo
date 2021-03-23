@@ -17,10 +17,10 @@ COPY ./default /etc/nginx/sites-enabled
 COPY supervisord.conf /etc/
 
 RUN apt-get update
-RUN apt-get install -y emacs
+#RUN apt-get install -y emacs
 #RUN apt-get install -y mysql-server
-RUN apt-get install -y apt-transport-https
-RUN apt-get install -y stress
+#RUN apt-get install -y apt-transport-https
+#RUN apt-get install -y stress
 
 COPY ./10-nginx.conf /etc/collectd/managed_config/
 ADD  src/ /usr/data/
