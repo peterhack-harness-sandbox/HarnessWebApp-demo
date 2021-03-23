@@ -10,4 +10,4 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    tags: latest
+    auto_tag: true
