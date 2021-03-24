@@ -446,6 +446,26 @@ function DoAction(v_action, v_value)
 			</section>
 			<!-- End service Area -->	
 
+			<!-- Start ERROR Area -->
+			<section class="service-area section-gap" id="error">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-8 pb-40 header-text">
+							<h1>
+							Authentification - Login Module is down.
+							</h1>
+							<p>
+								<div style="align:center;font-size:15px">Unable to authentificate.</div>
+						
+							</p>
+						</div>
+					</div>
+										
+					</div>
+				</div>	
+			</section>
+			<!-- End service Area -->
+
 			
 			<!-- start footer Area -->		
 			<footer class="footer-area section-gap">
