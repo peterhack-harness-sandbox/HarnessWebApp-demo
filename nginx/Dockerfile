@@ -3,20 +3,20 @@ FROM php:7.1-fpm
 RUN apt-get update && \
     apt-get install -y vim curl wget build-essential nginx supervisor gnupg2
 
-RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list && \
-    wget https://www.dotdeb.org/dotdeb.gpg && \
-    apt-key add dotdeb.gpg
+#RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list && \
+#    wget https://www.dotdeb.org/dotdeb.gpg && \
+#    apt-key add dotdeb.gpg
 
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-    && docker-php-ext-install pdo_mysql mysqli zip
+#RUN apt-get update && apt-get install -y \
+#        libfreetype6-dev \
+#        libjpeg62-turbo-dev \
+#        libmcrypt-dev \
+#    && docker-php-ext-install pdo_mysql mysqli zip
 
 COPY ./default /etc/nginx/sites-enabled
 COPY supervisord.conf /etc/
 
-RUN apt-get update
+#RUN apt-get update
 #RUN apt-get install -y emacs
 #RUN apt-get install -y mysql-server
 #RUN apt-get install -y apt-transport-https
