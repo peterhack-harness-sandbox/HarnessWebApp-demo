@@ -1,9 +1,24 @@
 # HarnessWebApp-demo
- A simple Web App to demo Harness with continuous Deployment and Verification
+
+A very simple Web/Mobile App to demonstrate how anyone can collaborate and improve your app!
+
+The Full CI/CD story demonstrates how to accelerate things (without breaking things :))
+
+**As a Developer, suggest your new feature and let the magic happend!**
+
+#Requirements
+
+- A github account
+
+# Story
+
+## Step1
+- Edit the file
 
 
-# Local Execution
-## Build
+# Wants to collaborate?
+
+## A GitHub Account
 `docker build -t ecointet/harness-webapp-demo .`
 ## Execute
 `docker run -p 80:8000 ecointet/harness-webapp-demo`
