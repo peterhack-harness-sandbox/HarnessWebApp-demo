@@ -15,7 +15,7 @@ else if ($detect->isSamsung()) $device = "Samsung";
 else if ($detect->isAndroidOS()) $device = "Android";
 
 if ($_ENV["DB"]) $_SESSION["DB"] = $_ENV["DB"];
-if (!$_SESSION["DB"]) $_SESSION["DB"]="http://localhost:81/data/api.php";
+if (!$_SESSION["DB"]) $_SESSION["DB"]="http://drone.cointet.com:8000//data/api.php";
 $_SESSION["device"] = $device;
 
 //CONTEXT

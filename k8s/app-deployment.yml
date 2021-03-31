@@ -1,23 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-demo-harness
+  name: ecointet-webapp
+  namespace: production
 spec:
   selector:
     matchLabels:
-      app: webapp-demo-harness
+      app: ecointet-webapp
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: webapp-demo-harness
+        app: ecointet-webapp
     spec:
       containers:
       - name: harness-webapp-demo
-        image: ecointet/harness-webapp-demo:v3
+        image: ecointet/harness-webapp-demo:3.4
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
         - name: DB
-          value: "http://34.77.254.105/data/api.php"
+          value: "http://drone.cointet.com:8000/data/api.php"

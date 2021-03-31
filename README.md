@@ -10,20 +10,17 @@ The Full CI/CD story demonstrates how to accelerate things (without breaking thi
 
 - A github account
 
-# Story
+# Short Story
 
 ## Step1
-- Edit the file
+- In GitHub, edit the file `/nginx/src/auth-module.php`
+- ***Propose Changes*** and do a ***Pull Request***
 
+## Step2
+- Go to [drone.cointet.com:3000](http://drone.cointet.com:3000)
+- username: **root**
+- password: **root**
 
-# Wants to collaborate?
-
-## A GitHub Account
-`docker build -t ecointet/harness-webapp-demo .`
-## Execute
-`docker run -p 80:8000 ecointet/harness-webapp-demo`
-GO to http://localhost
-
-# Local Debug
-`php -S 127.0.0.1:8080`
-GO to http://localhost:8080
+## Step3
+- Go to [app.harness.io](http://app.harness.io)
+- Harness will detect the new artifact (Docker Container) and start the deployment (**ecointet-deployment**)
