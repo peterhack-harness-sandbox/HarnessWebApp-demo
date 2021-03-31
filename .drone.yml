@@ -11,7 +11,7 @@ steps:
     dockerfile: nginx/Dockerfile
     context: nginx/
     #tag: pullrequest-${DRONE_PULL_REQUEST}
-    tag: "latest"
+    tag: "3.75"
 #- name: docker-api  
 #  image: plugins/docker
 #  settings:
