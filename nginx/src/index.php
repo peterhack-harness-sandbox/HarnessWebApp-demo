@@ -294,8 +294,8 @@ function DoAction(v_action, v_value)
 						<div class="col-md-8 pb-40 header-text">
 							<h1>
 							<?php 
-							$url = $_SERVER['HTTP_HOST'];
-							echo $url;
+							$url = $_SERVER['HTTP_HOST']."/?id=".$_SESSION['buyer'];
+							echo $url
 							?></h1>
 							<p>
 								<div style="align:center;font-size:15px">Get the App!</div>
