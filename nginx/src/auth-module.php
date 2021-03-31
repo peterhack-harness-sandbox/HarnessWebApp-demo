@@ -1,6 +1,7 @@
 <?php
 //Working on different version
 $auth_version=1;
+$auth_icon="";
 $auth_message="Welcome in our World!";
 
 //New Auth Module is version 2

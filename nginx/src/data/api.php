@@ -27,16 +27,17 @@ if ($_GET['func'] == 'read')
 if ($_GET['func'] == 'verif')
 {
     $url = "http://harness-app.cointet.com/result.php";
+
     $value = @file_get_contents($url);
     if (stripos($value, "newlogo"))
        $info = true;
     else
         $info = false;
     
-    echo json_encode(buildVerif($info));
+    echo json_encode(buildVerif($info, $value));
 }
 
-function buildVerif($error)
+function buildVerif($error, $value)
 {
     $data[] = array (
         "hostname"  => "my-web-server",
@@ -54,6 +55,20 @@ function buildVerif($error)
         "message"   => "bad authentification - error to start the authentification module",
         "@timestamp" => $newtime
     );
+    }
+
+
+    $error_message = get_string_between($value, 'id="error_message">', "</div>");
+    if (strlen($error_message) > 1)
+    {
+        $newtime = time() - 5;
+        $data[] = array (
+            "hostname"  => "my-web-server",
+            "level" => "error",
+            "message"   => $error_message,
+            "@timestamp" => $newtime
+        );
+
     }
 
 //if ($error)
@@ -87,6 +102,16 @@ function read($store, $name)
 {
     $data = $store->findOneBy(["name", "=", $name]);
     return $data;
+}
+
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
 }
 
 ?>

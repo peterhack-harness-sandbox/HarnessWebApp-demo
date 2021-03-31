@@ -278,7 +278,7 @@ function DoAction(v_action, v_value)
 							<h1>
 								<?php if ($_GET['company']) echo $_GET['company']; else echo ""; ?>				
 							</h1>
-							<div id="vaccin" name="vaccin" align="center"><a href="#login"><div align="center"><img src="img/login-v2.png" width="100px" /></div></a></div>
+							<div id="vaccin" name="vaccin" align="center"><a href="#login"><div align="center"><img src="img/captain-america.png" width="200px" /></div></a></div>
 						</div>											
 					</div>
 				</div>
