@@ -10,7 +10,6 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    auto_tag: true
     tag: test-${DRONE_PULL_REQUEST}
     #tags: "3.71"
 #- name: docker-api  
