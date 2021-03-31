@@ -26,7 +26,7 @@ if ($_GET['func'] == 'read')
 //API VERIFICATION
 if ($_GET['func'] == 'verif')
 {
-    $url = "http://35.240.117.151/result.php";
+    $url = "http://harness-app.cointet.com/result.php";
     $value = @file_get_contents($url);
     if (stripos($value, "newlogo"))
        $info = true;

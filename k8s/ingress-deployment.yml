@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ecointet-ingress
+  name: ingress-ecointet-webapp
   namespace: production
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "ecointet-webapp-static-ip"
 spec:
   backend:
-    serviceName: loadbalancer-harness-demo-app
+    serviceName: nodeport-ecointet-webapp
     servicePort: 8000
     
