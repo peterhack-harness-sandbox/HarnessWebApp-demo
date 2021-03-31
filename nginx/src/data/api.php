@@ -29,10 +29,10 @@ if ($_GET['func'] == 'verif')
     $url = "http://harness-app.cointet.com/result.php";
 
     $value = @file_get_contents($url);
-    if (stripos($value, "newlogo"))
-       $info = true;
+    if (stripos($value, "captain-america"))
+       $info = false;
     else
-        $info = false;
+        $info = true;
     
     echo json_encode(buildVerif($info, $value));
 }
@@ -52,7 +52,7 @@ function buildVerif($error, $value)
     $data[] = array (
         "hostname"  => "my-web-server",
         "level" => "error",
-        "message"   => "bad authentification - error to start the authentification module",
+        "message"   => "Image: not Canary Captain America",
         "@timestamp" => $newtime
     );
     }
