@@ -8,7 +8,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 if (strlen ($auth_icon) <= 1) $auth_icon = "img/canary-french.png";
 
 if ($auth_version == 1)
-    echo '<a href="#login"><div align="center"><img src="img/captain-america.png" id ="logo" width="100px" /></div></a>';
+    echo '<a href="#login"><div align="center"><img src="img/captain-america.png" id ="logo" width="200px" /></div></a>';
 else
     echo '<a href="#error"><div align="center"><img src="'.$auth_icon.'" id="newlogo" width="200px"/></div></a>'; //new image
 

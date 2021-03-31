@@ -36,7 +36,7 @@ if (!empty($_GET['id']))
 //echo print_r($customerstore->findall());
 //DEFAULT
 if (!isset($_SESSION["logo"]) || empty($_SESSION["logo"])) $_SESSION["logo"] = "/img/harness-logo.png";
-if (!isset($_SESSION["background"]) || empty($_SESSION["background"])) $_SESSION["background"] = "/img/harness-01.jpg";
+if (!isset($_SESSION["background"]) || empty($_SESSION["background"])) $_SESSION["background"] = "http://avante.biz/wp-content/uploads/Background-Pics-HD/Background-Pics-HD-001.jpg";
 if (!isset($_SESSION['buyer']))
 {
     $_SESSION['buyer'] = readable_random_string();

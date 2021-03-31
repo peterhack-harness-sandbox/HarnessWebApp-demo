@@ -10,7 +10,7 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    tag: latest
+    tag: "3.73"
     #tags: "3.71"
 #- name: docker-api  
 #  image: plugins/docker
