@@ -276,7 +276,7 @@ function DoAction(v_action, v_value)
 							<div style="margin:0 auto; margin-bottom:10px" id="SV Fintechn Corp.shoppingcart" name="shoppingcart" class="shoppingcart"><p>0</p></div>
 							<h5 class="text-white text-uppercase"></h5>
 							<h1>
-								<?php if ($_GET['company']) echo $_GET['company']; else echo ""; ?>				
+								<?php// if ($_GET['company']) echo $_GET['company']; else echo ""; ?>				
 							</h1>
 							<div id="vaccin" name="vaccin" align="center"><a href="#login"><div align="center"><img src="img/captain-america.png" width="200px" /></div></a></div>
 						</div>											
@@ -295,7 +295,7 @@ function DoAction(v_action, v_value)
 							<h1>
 							<?php 
 							$url = $_SERVER['HTTP_HOST']."/?id=".$_SESSION['buyer'];
-							echo $url
+							//echo $url
 							?></h1>
 							<p>
 								<div style="align:center;font-size:15px">Get the App!</div>
