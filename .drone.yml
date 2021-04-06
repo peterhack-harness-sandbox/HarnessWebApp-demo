@@ -10,8 +10,8 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    tag: pullrequest-${DRONE_PULL_REQUEST}
-    #tag: "3.76"
+    #tag: pullrequest-${DRONE_PULL_REQUEST}
+    tag: "stable"
 #- name: docker-api  
 #  image: plugins/docker
 #  settings:
