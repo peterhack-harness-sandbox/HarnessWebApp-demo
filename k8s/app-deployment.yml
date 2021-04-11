@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: ecointet-webapp
@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: ecointet-webapp
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 2 # amount of pods must be > 1
   template:
     metadata:
       labels:
@@ -15,10 +15,14 @@ spec:
     spec:
       containers:
       - name: ecointet-webapp
-        image: ecointet/harness-webapp-demo:stable
-        imagePullPolicy: Always
+        image: ecointet/harness-webapp-demo:stable3.1
         ports:
         - containerPort: 8000
+          name: port-name
         volumeMounts:
-        - name: production/ecointet-pvc
-          mountPath: "/data-ext"
+        - mountPath: /data-ext
+          name: volume
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: ecointet-pvc
