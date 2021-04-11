@@ -14,20 +14,20 @@ else if ($detect->isiPhone()) $device = "iPhone";
 else if ($detect->isSamsung()) $device = "Samsung";
 else if ($detect->isAndroidOS()) $device = "Android";
 
-if ($_ENV["DB"]) $_SESSION["DB"] = $_ENV["DB"];
-if (!$_SESSION["DB"]) $_SESSION["DB"]="http://drone.cointet.com:8000//data/api.php";
 $_SESSION["device"] = $device;
 
 //CONTEXT
 if (!empty($_GET['id']))
 	{
-		$data = readApi($_GET['id']);
+		
+		$data = readApi($store, $_GET['id']);
 		if ($data)
 			{
-				$_SESSION['buyer'] = $data->{"name"};
-				$_SESSION['logo'] = $data->{"logo"};
-				$_SESSION['background'] = $data->{"background"};
+				$_SESSION['buyer'] = $data["name"];
+				$_SESSION['logo'] = $data["logo"];
+				$_SESSION['background'] = $data["background"];
 				//echo "DEBUG:";
+				//echo "result[".$data["name"]."]";
 				//print_r($data);
 			}
 	}
@@ -276,7 +276,7 @@ function DoAction(v_action, v_value)
 							<div style="margin:0 auto; margin-bottom:10px" id="SV Fintechn Corp.shoppingcart" name="shoppingcart" class="shoppingcart"><p>0</p></div>
 							<h5 class="text-white text-uppercase"></h5>
 							<h1>
-								<?php// if ($_GET['company']) echo $_GET['company']; else echo ""; ?>				
+												
 							</h1>
 							<div id="vaccin" name="vaccin" align="center"><a href="#login"><div align="center"><img src="img/captain-america.png" width="200px" /></div></a></div>
 						</div>											
@@ -518,8 +518,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<!-- End footer Area -->	
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>		
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
   			<script src="js/easing.min.js"></script>			
 			<script src="js/hoverIntent.js"></script>

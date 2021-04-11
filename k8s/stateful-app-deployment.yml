@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ecointet-webapp
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: ecointet-webapp
+  serviceName: "ecointet-webapp"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ecointet-webapp
+    spec:
+      containers:
+      - name: ecointet-webapp
+        image: ecointet/harness-webapp-demo:stable
+        ports:
+        - containerPort: 8000
+          name: port-name
+        volumeMounts:
+        - name: ecointet-pvc
+          mountPath: "/data-ext"
+  volumeClaimTemplates:
+  - metadata:
+      name: ecointet-pvc
+      namespace: production
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi

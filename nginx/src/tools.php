@@ -1,12 +1,16 @@
 <?php
 session_start();
-
+require_once "data/src/Store.php";
+$folder = __DIR__;
+$folder = "/data-ext";
+$databaseDirectory = $folder . "/demo-harness-database";
+$store = new \SleekDB\Store("demo-harness", $databaseDirectory);
 
 //ACTIONS
 if ($_GET["action"] == "update-customer")
 {
     $_SESSION["buyer"] = $_GET["value"];
-    insertPref();
+    insertPref($store);
     die("New Session Name! customer: [".$_SESSION["buyer"]."]");
 }
 
@@ -14,7 +18,7 @@ if ($_GET["action"] == "update-customer")
 if ($_GET["action"] == "update-logo")
 {
     $_SESSION["logo"] = $_GET["value"];
-    insertPref();
+    insertPref($store);
     die("New Session Name! logo: [".$_SESSION["logo"]."]");
 }
 
@@ -22,8 +26,19 @@ if ($_GET["action"] == "update-logo")
 if ($_GET["action"] == "update-background")
 {
     $_SESSION["background"] = $_GET["value"];
-    insertPref();
+    insertPref($store);
     die("New Session Name! background: [".$_SESSION["background"]."]");
+}
+
+//ACTIONS
+if ($_GET["action"] == "debug")
+{
+    if ($_GET['name'])
+     print_r($store->findOneBy(["name", "=", strtolower($_GET['name'])]));
+    else
+     print_r($store->findAll());
+     
+    die("done");
 }
 
 
@@ -52,33 +67,26 @@ function readable_random_string($length = 6)
 }
 
 
-function readApi($name)
+function readApi($store, $name)
 {
     //echo "DEBUG";
   //  echo "MY-DEBUG-READ".getenv("DB");
-    $url = $_SESSION["DB"]."?func=read&name=".$name;
-    $value = file_get_contents($url);
-   // echo $value;
-    $value = json_decode($value);
+    $value = $store->findOneBy(["name", "=", strtolower($name)]);
+   // echo $value;;
    // print_r($value);
     return $value;
 }
 
-function insertPref()
+function insertPref($store)
 {
-    writeApi($_SESSION["buyer"], $_SESSION["logo"], $_SESSION["background"]);
+    $store->deleteBy(["name", "=", $_SESSION["buyer"]]);
+
+    $data = [
+        'name' => $_SESSION["buyer"],
+        'logo' => $_SESSION["logo"],
+        'background' => $_SESSION["background"]
+    ];
+
+    $results = $store->insert($data);
 }
-
-function writeApi($name, $logo, $background)
-{
-  //  echo "MY-DEBUG".getenv("DB");
-    $url = $_SESSION["DB"]."?func=insert&name=".$name."&logo=".$logo."&background=".$background;
-    $value = file_get_contents($url);
-    echo $value;
- //   echo $url;
- //   print_r($value);
-    return $value;
-}
-
-
 ?>

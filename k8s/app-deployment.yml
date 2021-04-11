@@ -14,11 +14,11 @@ spec:
         app: ecointet-webapp
     spec:
       containers:
-      - name: harness-webapp-demo
-        image: ecointet/harness-webapp-demo:3.4
+      - name: ecointet-webapp
+        image: ecointet/harness-webapp-demo:stable
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
-        env:
-        - name: DB
-          value: "http://drone.cointet.com:8000/data/api.php"
+        volumeMounts:
+        - name: production/ecointet-pvc
+          mountPath: "/data-ext"
