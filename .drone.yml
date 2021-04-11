@@ -21,7 +21,6 @@ steps:
     tag: "stable"
 
 #Notification Phase
-steps:
 - name: Notification
   image: golang
   commands:
