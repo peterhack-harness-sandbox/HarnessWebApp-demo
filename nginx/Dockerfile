@@ -27,4 +27,4 @@ ADD  src/ /usr/data/
 RUN  chmod 777 -R /usr/data/
 EXPOSE 8000
 
-CMD /usr/bin/supervisord -n -c /etc/supervisord.conf
+CMD /usr/bin/supervisord -n -c /etc/supervisord.conf && chmod 777 -R /data-ext
