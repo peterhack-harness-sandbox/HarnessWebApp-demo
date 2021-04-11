@@ -1,10 +1,15 @@
 <?php
+session_save_path('/data-ext/sessions');
+ini_set('session.gc_probability', 1);
 session_start();
 require_once "data/src/Store.php";
 $folder = __DIR__;
 $folder = "/data-ext";
 $databaseDirectory = $folder . "/demo-harness-database";
 $store = new \SleekDB\Store("demo-harness", $databaseDirectory);
+
+function getLogo()
+{}
 
 //ACTIONS
 if ($_GET["action"] == "update-customer")

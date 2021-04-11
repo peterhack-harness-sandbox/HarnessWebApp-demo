@@ -18,7 +18,7 @@ steps:
     dockerfile: nginx/Dockerfile
     context: nginx/
     #tag: pullrequest-${DRONE_PULL_REQUEST}
-    tag: "stable3"
+    tag: "stable3.1"
 
 #Notification Phase
 - name: Notification

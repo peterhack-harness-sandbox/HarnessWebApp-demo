@@ -3,8 +3,10 @@
   header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
   header("Pragma: no-cache"); //HTTP 1.0
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+  session_save_path('/data-ext/sessions');
+  ini_set('session.gc_probability', 1);
+  session_start();
 
-session_start();
 require("tools.php");
 require_once "mobile-detect/Mobile_Detect.php";
 
@@ -19,7 +21,6 @@ $_SESSION["device"] = $device;
 //CONTEXT
 if (!empty($_GET['id']))
 	{
-		
 		$data = readApi($store, $_GET['id']);
 		if ($data)
 			{
