@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ecointet-webapp
-        image: ecointet/harness-webapp-demo:stable
+        image: ecointet/harness-webapp-demo:stable2
         ports:
         - containerPort: 8000
           name: port-name
