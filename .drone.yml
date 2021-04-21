@@ -17,8 +17,8 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    tag: pullrequest-${DRONE_PULL_REQUEST}
-    #tag: "stable3.1"
+    #tag: pullrequest-${DRONE_PULL_REQUEST}
+    tag: "stable3.2"
 
 #Notification Phase
 - name: Notification
