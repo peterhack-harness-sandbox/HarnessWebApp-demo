@@ -13,4 +13,4 @@ steps:
     dockerfile: nginx/Dockerfile
     context: nginx/
     #tag: pullrequest-${DRONE_PULL_REQUEST}
-    tag: "test1.1"
+    tag: "test1.2"
