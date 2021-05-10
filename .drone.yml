@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 ## Docker Image Build and push
-- name: Build_Docker_Image  
+- name: BuildDockerImage  
   image: plugins/docker
   settings:
     username: ecointet
