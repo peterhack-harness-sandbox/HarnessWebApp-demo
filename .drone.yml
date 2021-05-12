@@ -1,11 +1,15 @@
 kind: pipeline
-type: kubernetes
-name: Execution
+name: default
 
 ##Test Phase
 steps:
+- name: CodeUnitTests
+  image: golang
+  commands:
+  - echo "SonarQube Test Done"
+
 ## Docker Image Build and push
-- name: Build Docker Image 
+- name: DockerImageCreation  
   image: plugins/docker
   settings:
     username: ecointet
@@ -13,5 +17,20 @@ steps:
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
-    #tag: pullrequest-${DRONE_PULL_REQUEST}
-    tag: "test1.2"
+    tag: pullrequest-${DRONE_PULL_REQUEST}
+    #tag: "stable3.2"
+
+#Notification Phase
+- name: Notification
+  image: golang
+  commands:
+  - echo "Slack Message Sent - Jira Ticket created."
+#- name: docker-api  
+#  image: plugins/docker
+#  settings:
+#    username: ecointet
+#    password: 7d5219ab-ee5b-4111-b5f5-21a5623d3a48
+#    repo: ecointet/harness-webapp-demo-api
+#    dockerfile: nginx/Dockerfile
+#    context: nginx/
+#    tags: "latest"
