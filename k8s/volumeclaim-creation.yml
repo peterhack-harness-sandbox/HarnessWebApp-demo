@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ecointet-pvc
+  name: ecointet-pvc-2
   namespace: production
 spec:
   accessModes:

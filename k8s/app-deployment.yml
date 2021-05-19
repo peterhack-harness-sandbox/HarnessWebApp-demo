@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ecointet-webapp
-        image: ecointet/harness-webapp-demo:stable3.1
+        image: ${artifact.metadata.image}
         ports:
         - containerPort: 8000
           name: port-name
@@ -25,4 +25,4 @@ spec:
       volumes:
       - name: volume
         persistentVolumeClaim:
-          claimName: ecointet-pvc
+          claimName: ecointet-pvc-2
