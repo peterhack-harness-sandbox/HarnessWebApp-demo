@@ -36,6 +36,14 @@ if ($_GET["action"] == "update-background")
 }
 
 //ACTIONS
+if ($_GET["action"] == "update-link")
+{
+    $_SESSION["link"] = $_GET["value"];
+    insertPref($store);
+    die("New Link ! link: [".$_SESSION["link"]."]");
+}
+
+//ACTIONS
 if ($_GET["action"] == "debug")
 {
     if ($_GET['name'])
@@ -89,7 +97,8 @@ function insertPref($store)
     $data = [
         'name' => $_SESSION["buyer"],
         'logo' => $_SESSION["logo"],
-        'background' => $_SESSION["background"]
+        'background' => $_SESSION["background"],
+        'link' => $_SESSION["link"]
     ];
 
     $results = $store->insert($data);

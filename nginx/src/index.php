@@ -27,6 +27,7 @@ if (!empty($_GET['id']))
 				$_SESSION['buyer'] = $data["name"];
 				$_SESSION['logo'] = $data["logo"];
 				$_SESSION['background'] = $data["background"];
+				$_SESSION['link'] = $data["link"];
 				//echo "DEBUG:";
 				//echo "result[".$data["name"]."]";
 				//print_r($data);
@@ -36,6 +37,7 @@ if (!empty($_GET['id']))
 //echo "DEBUG";
 //echo print_r($customerstore->findall());
 //DEFAULT
+if (!isset($_SESSION["link"]) || empty($_SESSION["link"])) $_SESSION["link"] = "https://harness.io/";
 if (!isset($_SESSION["logo"]) || empty($_SESSION["logo"])) $_SESSION["logo"] = "/img/harness-logo.png";
 if (!isset($_SESSION["background"]) || empty($_SESSION["background"])) $_SESSION["background"] = "http://avante.biz/wp-content/uploads/Background-Pics-HD/Background-Pics-HD-001.jpg";
 if (!isset($_SESSION['buyer']))
@@ -260,6 +262,7 @@ function DoAction(v_action, v_value)
 				              <li>Customer: <form><input type="text" id="customer" value="<?php echo $_SESSION['buyer']; ?>"></form></li>
 							  <li>Logo: <form><input type="text" id="customer-logo" value="<?php echo $_SESSION['logo']; ?>"></form></li>
 							  <li>Background: <form><input type="text" id="background" value="<?php echo $_SESSION['background']; ?>"></form></li>
+							  <li>Link: <form><input type="text" id="link" value="<?php echo $_SESSION['link']; ?>"></form></li>
 				            </ul>
 				          </li>
 				        </ul>
@@ -552,6 +555,13 @@ $( "#customer-logo" ).change(function() {
 $( "#background" ).change(function() {
 	console.log($( "#background" ).val());
 	DoAction("update-background", $( "#background" ).val());
+			});
+//End
+
+//LinkChange
+$( "#link" ).change(function() {
+	console.log($( "#link" ).val());
+	DoAction("update-link", $( "#link" ).val());
 			});
 //End
 
