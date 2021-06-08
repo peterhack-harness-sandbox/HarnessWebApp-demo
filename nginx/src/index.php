@@ -120,6 +120,8 @@ function loadvaccin(){
 }
 
 function goto($hashtag){
+	 document.getElementById($hashtag).style.visibility = "visible";
+	 if ($hashtag == "home") document.getElementById("error").style.visibility = "hidden";
      document.location = "index.php#" + $hashtag;
 }
 
@@ -362,7 +364,7 @@ function DoAction(v_action, v_value)
 		
 
 			<!-- Start ERROR Area -->
-			<section class="service-area section-gap" id="error">
+			<section class="service-area section-gap" id="error" style="visibility: hidden;">
 				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-md-8 pb-40 header-text">
