@@ -66,6 +66,11 @@ if (!isset($_SESSION['buyer']))
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 
+		
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 <!--===============================================================================================-->	
 <link rel="icon" type="image/png" href="/login/images/icons/favicon.ico"/>
@@ -114,6 +119,9 @@ function loadvaccin(){
  },2000);
 }
 
+function goto($hashtag){
+     document.location = "index.php#" + $hashtag;
+}
 
 function DoAction(v_action, v_value)
 {
@@ -247,16 +255,6 @@ function DoAction(v_action, v_value)
 				        <ul class="nav-menu">
 				          <li class="menu-active"><a href="#home">Home</a></li>
 				          <li><a href="#service">share with people</a></li>
-						  <li><a href="#login">Login</a></li>
-				          <li class="menu-has-children"><a href="">DEBUG</a>
-				            <ul>
-				              <li>Token: <b><?php echo $_ENV["TOKEN"]; ?></b></li>
-							  <li>Realm: <b><?php echo $_ENV["REALM"]; ?></b></li>
-				              <li>Hostname: <b><?php echo $_ENV["HOST"]; ?></b></li>
-							  <li>"Buy-Metric=<b><?php echo $_ENV["BUYMETRIC"]; ?></b>"</li>
-							  <li>"?company=<b><?php echo $_GET["company"]; ?></b>"</li>
-				            </ul>
-				          </li>
 						  <li class="menu-has-children"><a href="">CONFIG</a>
 				            <ul>
 				              <li>Customer: <form><input type="text" id="customer" value="<?php echo $_SESSION['buyer']; ?>"></form></li>
@@ -361,94 +359,7 @@ function DoAction(v_action, v_value)
 			</section>
 			<!-- End service Area -->
 
-				<!-- Start Jenkins Area -->
-			<section class="service-area section-gap" id="login">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="col-md-8 pb-40 header-text">
-						<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-85 p-b-20">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-70">
-						Please Sign-in
-					</span>
-					<span class="login100-form-avatar">
-						<img src="/login/images/avatar-01.jpg" alt="AVATAR">
-					</span>
-
-					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
-						<input class="input100" type="text" name="username">
-						<span class="focus-input100" data-placeholder="Username"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
-						<input class="input100" type="password" name="pass">
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-					<ul class="login-more p-t-190">
-						<li class="m-b-8">
-							<span class="txt1">
-								Forgot
-							</span>
-
-							<a href="#" class="txt2">
-								Username / Password?
-							</a>
-						</li>
-
-						<li>
-							<span class="txt1">
-								Don’t have an account?
-							</span>
-
-							<a href="#" class="txt2">
-								Sign up
-							</a>
-						</li>
-					</ul>
-				</form>
-			</div>
-		</div>
-	</div>
-						</div>
-					</div>
-					
-						<div class="col-lg-4 col-md-6">
-							<div class="single-service">
-								<h4><span class="lnr lnr-rocket"></span>Technical Skills</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>				
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-service">
-								<h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>								
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<div class="single-service">
-								<h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>									
-							</div>
-						</div>						
-					</div>
-				</div>	
-			</section>
-			<!-- End service Area -->	
+		
 
 			<!-- Start ERROR Area -->
 			<section class="service-area section-gap" id="error">
@@ -456,12 +367,20 @@ function DoAction(v_action, v_value)
 					<div class="row d-flex justify-content-center">
 						<div class="col-md-8 pb-40 header-text">
 							<h1>
-							Authentification - Login Module is down.
+							Error  503
 							</h1>
+							<h2>
+							Service Unavailable :(
+</h2>
+
 							<p>
-								<div style="align:center;font-size:15px">Unable to authentificate.</div>
+								<div style="align:center;font-size:15px">our team is working on it...</div>
 						
 							</p>
+
+							<p>
+							<a onclick="goto('home')"><div style="align:center;font-size:30px"><div align="center" style="float"><img src="/img/close.png" width="80px"></div>Back to home</div>
+							</a></p>
 						</div>
 					</div>
 										
