@@ -1,9 +1,11 @@
 kind: pipeline
 name: default
 
+##Test Phase
+steps:
 
 ## Docker Image Build and push
-- name: Build_and_Push_Docker_Image 
+- name: Build_and_Push_DockerImage
   image: plugins/docker
   settings:
     username: ecointet
@@ -12,8 +14,7 @@ name: default
     dockerfile: nginx/Dockerfile
     context: nginx/
     #tag: pullrequest-${DRONE_PULL_REQUEST}
-    tag: "dev1"
-
+    tag: "dev1.1"
 
 #- name: docker-api  
 #  image: plugins/docker
