@@ -13,7 +13,8 @@ steps:
   image: plugins/docker
   settings:
     username: ecointet
-    password: 7d5219ab-ee5b-4111-b5f5-21a5623d3a48
+    password:
+      from_secret: ecointet-docker-hub-password
     repo: ecointet/harness-webapp-demo
     dockerfile: nginx/Dockerfile
     context: nginx/
@@ -21,10 +22,15 @@ steps:
     #tag: "stable4.4"
 
 #Notification Phase
-- name: Notification
-  image: golang
-  commands:
-  - echo "Slack Message Sent - Jira Ticket created."
+- name: SlackNotif
+  image: plugins/slack
+  settings:
+    webhook: 
+      from_secret: slack-webhook
+    channel: ecointet-channel
+    icon_url: https://unsplash.it/256/256/?random
+  when:
+    status: [ success, failure ]
 #- name: docker-api  
 #  image: plugins/docker
 #  settings:
