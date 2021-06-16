@@ -3,8 +3,8 @@
   header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
   header("Pragma: no-cache"); //HTTP 1.0
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-  session_save_path('/data-ext/sessions');
-  ini_set('session.gc_probability', 1);
+  #session_save_path('/data-ext/sessions');
+  #ini_set('session.gc_probability', 1);
   session_start();
 
 require("tools.php");
@@ -68,9 +68,75 @@ if (!isset($_SESSION['buyer']))
 
 		
 
-
+<script>
+var interval = null;
+</script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Harness Feature Flag Module -->
+<script type="module">
+      import { initialize, Event } from 'https://unpkg.com/@harnessio/ff-javascript-client-sdk@1.3.7/dist/sdk.client.js'
+
+      const log = msg => {
+        document.querySelector('#log').innerHTML += `${msg}\n`
+      }
+
+      const cf = initialize('8b42e435-ed82-4c21-9579-39ae843964a6', {
+    identifier: "everyone",      // Target identifier
+    name: "Everyone",                  // Optional target name
+    attributes: {                            // Optional target attributes
+      email: 'etienne.cointet@harness.io'
+    }
+  });
+
+  cf.on(Event.READY, flags => {
+        console.log(JSON.stringify(flags, null, 2))
+      })
+
+      cf.on(Event.CHANGED, flagInfo => {
+        if (flagInfo.deleted) {
+          console.log('Flag is deleted')
+          console.log(JSON.stringify(flagInfo, null, 2))
+        } else {
+          console.log('Flag is changed')
+          console.log(JSON.stringify(flagInfo, null, 2))
+		
+		  flagSelector(flagInfo);
+        }
+      })
+
+	  function flagSelector(flagInfo)
+	  {
+		  	//Custom Background
+			if (flagInfo["flag"] == "Custom_Background")
+				{
+					if (flagInfo["value"] == true)
+						var imageUrl = "https://wallpaper.dog/large/17248916.jpg";
+					else
+						var imageUrl = "https://wallpaperaccess.com/full/1209615.jpg";
+					
+					console.log(imageUrl);
+					$(".banner-area").css("background", "url(" + imageUrl + ")");
+				}
+			//Custom Main Page Image
+			if (flagInfo["flag"] == "Landing_Page_logo")
+			{
+				clearInterval(window.interval);
+
+				if (flagInfo["value"] == true)
+					var image = "img/canary-french.png";
+				else
+					var image = "img/captain-america.png";
+				
+				console.log(image);	
+				$('#vaccin').html('<img src="'+image+'" width="200px" />');
+			}
+
+	  }
+</script>
+
+
 
 <!--===============================================================================================-->	
 <link rel="icon" type="image/png" href="/login/images/icons/favicon.ico"/>
@@ -114,7 +180,7 @@ if (!isset($_SESSION['buyer']))
 		<script>
 
 function loadvaccin(){
-	setInterval(function(){
+	window.interval = setInterval(function(){
       $('#vaccin').load('result.php');
  },2000);
 }
@@ -282,7 +348,7 @@ function DoAction(v_action, v_value)
 							<h1>
 												
 							</h1>
-							<div id="vaccin" name="vaccin" align="center"><a href="#login"><div align="center"><img src="img/captain-america.png" width="200px" /></div></a></div>
+							<div id="vaccin" name="vaccin" id="vaccin" align="center"><a href="#login"><div align="center"><img src="img/captain-america.png" width="200px" /></div></a></div>
 						</div>											
 					</div>
 				</div>
