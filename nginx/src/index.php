@@ -3,8 +3,8 @@
   header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
   header("Pragma: no-cache"); //HTTP 1.0
   header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-  #session_save_path('/data-ext/sessions');
-  #ini_set('session.gc_probability', 1);
+  session_save_path('/data-ext/sessions');
+  ini_set('session.gc_probability', 1);
   session_start();
 
 require("tools.php");
@@ -114,7 +114,7 @@ var interval = null;
 					if (flagInfo["value"] == true)
 						var imageUrl = "https://wallpaper.dog/large/17248916.jpg";
 					else
-						var imageUrl = "https://wallpaperaccess.com/full/1209615.jpg";
+						var imageUrl = $( "#background" ).val();
 					
 					console.log(imageUrl);
 					$(".banner-area").css("background", "url(" + imageUrl + ")");
@@ -130,7 +130,16 @@ var interval = null;
 					var image = "img/captain-america.png";
 				
 				console.log(image);	
-				$('#vaccin').html('<img src="'+image+'" width="200px" />');
+				$('#vaccin').html('<a href="'+$( "#link" ).val()+'"><img src="'+image+'" width="200px" /></a>');
+			}
+
+			//Redirect To the Custom Link
+			if (flagInfo["flag"] == "Redirect_People_to_the_Survey")
+			{
+				clearInterval(window.interval);
+
+				if (flagInfo["value"] == true)
+					window.location.replace($( "#link" ).val());
 			}
 
 	  }
